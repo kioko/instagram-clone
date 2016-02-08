@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,13 +17,76 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="  Copyright (c) 2016 TK. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-jR-Ahe">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insta Clone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WC2-ql-GGX">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="37"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Pkk-WF-CqW">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ibz-jR-Ahe" secondAttribute="bottom" id="0FA-br-r7n"/>
+                            <constraint firstItem="ibz-jR-Ahe" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="10" id="24R-d5-TYd"/>
+                            <constraint firstItem="WC2-ql-GGX" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="4TS-AR-mdJ"/>
+                            <constraint firstItem="WC2-ql-GGX" firstAttribute="top" secondItem="Pkk-WF-CqW" secondAttribute="bottom" constant="50" id="9OU-Ml-d7G"/>
+                            <constraint firstItem="WC2-ql-GGX" firstAttribute="centerX" secondItem="Pkk-WF-CqW" secondAttribute="centerX" id="G63-VT-xRO"/>
+                            <constraint firstItem="WC2-ql-GGX" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="PNR-WE-wo3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ibz-jR-Ahe" secondAttribute="trailing" constant="-10" id="VgN-Ec-1Xa"/>
+                            <constraint firstAttribute="bottom" secondItem="WC2-ql-GGX" secondAttribute="bottom" constant="161" id="YOn-IW-5P3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ibz-jR-Ahe"/>
+                                <exclude reference="WC2-ql-GGX"/>
+                                <exclude reference="Pkk-WF-CqW"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4TS-AR-mdJ"/>
+                                <exclude reference="9OU-Ml-d7G"/>
+                                <exclude reference="G63-VT-xRO"/>
+                                <exclude reference="PNR-WE-wo3"/>
+                                <exclude reference="YOn-IW-5P3"/>
+                                <exclude reference="24R-d5-TYd"/>
+                                <exclude reference="VgN-Ec-1Xa"/>
+                                <exclude reference="0FA-br-r7n"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ibz-jR-Ahe"/>
+                                <include reference="WC2-ql-GGX"/>
+                                <include reference="Pkk-WF-CqW"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4TS-AR-mdJ"/>
+                                <include reference="9OU-Ml-d7G"/>
+                                <include reference="G63-VT-xRO"/>
+                                <include reference="PNR-WE-wo3"/>
+                                <include reference="YOn-IW-5P3"/>
+                                <include reference="24R-d5-TYd"/>
+                                <include reference="VgN-Ec-1Xa"/>
+                                <include reference="0FA-br-r7n"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="instagram_icon" width="256" height="256"/>
+    </resources>
 </document>
