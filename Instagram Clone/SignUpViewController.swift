@@ -54,6 +54,10 @@ UINavigationControllerDelegate{
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap) //add the gesture the view
         
+        //Make imageView circular
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 4.8
+        profileImageView.clipsToBounds = true
+        
         //Image tap guesture that invokes UIImagePickerController
         let loadImageTap = UITapGestureRecognizer(target: self, action: "loadProfileImage:")
         loadImageTap.numberOfTapsRequired = 1
@@ -93,13 +97,15 @@ UINavigationControllerDelegate{
         
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.sourceType = .PhotoLibrary //Location to select imaged
         imagePicker.allowsEditing = true
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     //Update the profile picture image with the selected image from the gallery
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        //Update the imageView with the selected image from the gallery
         profileImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
