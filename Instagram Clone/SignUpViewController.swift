@@ -8,7 +8,8 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate{
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -47,10 +48,17 @@ class SignUpViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideKeyboard:", name: UIKeyboardWillHideNotification, object: nil)
         
+        //Hide keyboard tap guesture
         let hideTap = UITapGestureRecognizer(target: self, action: "hideKeyboardType:")
         hideTap.numberOfTapsRequired = 1
         self.view.userInteractionEnabled = true
-        self.view.addGestureRecognizer(hideTap) //add teh gesture the view
+        self.view.addGestureRecognizer(hideTap) //add the gesture the view
+        
+        //Image tap guesture that invokes UIImagePickerController
+        let loadImageTap = UITapGestureRecognizer(target: self, action: "loadProfileImage:")
+        loadImageTap.numberOfTapsRequired = 1
+        profileImageView.userInteractionEnabled = true
+        profileImageView.addGestureRecognizer(loadImageTap) //add the gesture the view
         
     }
     
@@ -78,6 +86,22 @@ class SignUpViewController: UIViewController {
         UIView.animateWithDuration(0.4) { () -> Void in
             self.scrollView.frame.size.height = self.view.frame.height
         }
+    }
+    
+    //Allow the user to select image from gallary
+    func loadProfileImage(recognizer: UITapGestureRecognizer){
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.allowsEditing = true
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    //Update the profile picture image with the selected image from the gallery
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        profileImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
