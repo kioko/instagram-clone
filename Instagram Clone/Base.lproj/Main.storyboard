@@ -301,7 +301,6 @@
                                 <constraints>
                                     <constraint firstItem="bVb-96-cw3" firstAttribute="top" secondItem="58O-4u-mOi" secondAttribute="bottom" constant="13" id="4l4-S8-5vo"/>
                                     <constraint firstItem="alQ-70-FWl" firstAttribute="leading" secondItem="Bgn-Ff-tSH" secondAttribute="leading" id="5zZ-K3-J2c"/>
-                                    <constraint firstItem="9Vk-Bc-naS" firstAttribute="top" secondItem="eq6-UM-Cta" secondAttribute="top" constant="28" id="619-nJ-xOO"/>
                                     <constraint firstItem="bVb-96-cw3" firstAttribute="leading" secondItem="58O-4u-mOi" secondAttribute="leading" id="8dc-HN-TWS"/>
                                     <constraint firstItem="pr1-0E-ewc" firstAttribute="trailing" secondItem="alQ-70-FWl" secondAttribute="trailing" id="IaF-33-Gwf"/>
                                     <constraint firstItem="58O-4u-mOi" firstAttribute="top" secondItem="pr1-0E-ewc" secondAttribute="bottom" constant="8" symbolic="YES" id="L3e-E8-lLN"/>
@@ -314,6 +313,7 @@
                                     <constraint firstItem="pr1-0E-ewc" firstAttribute="leading" secondItem="alQ-70-FWl" secondAttribute="leading" id="eH3-6D-kOS"/>
                                     <constraint firstItem="bFG-PZ-x5c" firstAttribute="leading" secondItem="bVb-96-cw3" secondAttribute="leading" id="fE3-eD-lKH"/>
                                     <constraint firstItem="58O-4u-mOi" firstAttribute="leading" secondItem="pr1-0E-ewc" secondAttribute="leading" id="g3e-tR-cgq"/>
+                                    <constraint firstItem="9Vk-Bc-naS" firstAttribute="top" secondItem="eq6-UM-Cta" secondAttribute="top" constant="28" id="gqe-89-f6r"/>
                                     <constraint firstAttribute="bottom" secondItem="bFG-PZ-x5c" secondAttribute="bottom" constant="139" id="h7g-9Y-OCh">
                                         <variation key="widthClass=compact" constant="129"/>
                                     </constraint>
@@ -343,8 +343,8 @@
                                         <exclude reference="hFx-Mj-FaM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="619-nJ-xOO"/>
                                         <exclude reference="Me5-Fa-Lwo"/>
+                                        <exclude reference="gqe-89-f6r"/>
                                         <exclude reference="VZZ-VV-aOz"/>
                                         <exclude reference="rJ5-ZB-ryS"/>
                                         <exclude reference="uK6-71-GNQ"/>
@@ -384,8 +384,8 @@
                                         <include reference="hFx-Mj-FaM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="619-nJ-xOO"/>
                                         <include reference="Me5-Fa-Lwo"/>
+                                        <include reference="gqe-89-f6r"/>
                                         <include reference="VZZ-VV-aOz"/>
                                         <include reference="rJ5-ZB-ryS"/>
                                         <include reference="uK6-71-GNQ"/>
@@ -451,8 +451,8 @@
                         <outlet property="fullNameTextField" destination="pr1-0E-ewc" id="ZjJ-I0-eWJ"/>
                         <outlet property="passwordTextField" destination="Bgn-Ff-tSH" id="L5M-g1-3Vh"/>
                         <outlet property="profileImageView" destination="9Vk-Bc-naS" id="EX0-PJ-6WP"/>
+                        <outlet property="scrollView" destination="eq6-UM-Cta" id="orU-Si-p0K"/>
                         <outlet property="signUpButton" destination="bFG-PZ-x5c" id="bc8-S5-lRT"/>
-                        <outlet property="srollView" destination="eq6-UM-Cta" id="pd1-pQ-O6a"/>
                         <outlet property="userNameTextField" destination="0Vf-DX-cZD" id="ths-86-gGk"/>
                         <outlet property="websiteTextField" destination="bVb-96-cw3" id="pvg-Bn-NoY"/>
                     </connections>
