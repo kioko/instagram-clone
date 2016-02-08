@@ -13,6 +13,18 @@
 		D613BA1A1C67AA510091DCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D613BA191C67AA510091DCA8 /* Assets.xcassets */; };
 		D613BA1D1C67AA510091DCA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D613BA1B1C67AA510091DCA8 /* LaunchScreen.storyboard */; };
 		D613BA281C67AA510091DCA8 /* Instagram_CloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D613BA271C67AA510091DCA8 /* Instagram_CloneTests.swift */; };
+		D681F23E1C6909FA0036FC9F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F23D1C6909FA0036FC9F /* AudioToolbox.framework */; };
+		D681F2401C690A0B0036FC9F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F23F1C690A0B0036FC9F /* CFNetwork.framework */; };
+		D681F2421C690A120036FC9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F2411C690A120036FC9F /* CoreGraphics.framework */; };
+		D681F2441C690A180036FC9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F2431C690A180036FC9F /* CoreLocation.framework */; };
+		D681F2461C690A1E0036FC9F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F2451C690A1E0036FC9F /* QuartzCore.framework */; };
+		D681F2481C690A250036FC9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F2471C690A250036FC9F /* Security.framework */; };
+		D681F24A1C690A2C0036FC9F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F2491C690A2C0036FC9F /* StoreKit.framework */; };
+		D681F24C1C690A350036FC9F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F24B1C690A350036FC9F /* SystemConfiguration.framework */; };
+		D681F24E1C690A3D0036FC9F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F24D1C690A3D0036FC9F /* libz.tbd */; };
+		D681F2501C690A470036FC9F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F24F1C690A470036FC9F /* libsqlite3.tbd */; };
+		D681F2521C690BAE0036FC9F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D681F2511C690BAE0036FC9F /* SignInViewController.swift */; };
+		D681F2541C690BC50036FC9F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D681F2531C690BC50036FC9F /* SignUpViewController.swift */; };
 		ED318A04B27685E89C627049 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A178E681A95D1FE1399FEE /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +53,18 @@
 		D613BA271C67AA510091DCA8 /* Instagram_CloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instagram_CloneTests.swift; sourceTree = "<group>"; };
 		D613BA291C67AA510091DCA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D613BA321C67AAC60091DCA8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D681F23D1C6909FA0036FC9F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D681F23F1C690A0B0036FC9F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D681F2411C690A120036FC9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D681F2431C690A180036FC9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D681F2451C690A1E0036FC9F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D681F2471C690A250036FC9F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D681F2491C690A2C0036FC9F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D681F24B1C690A350036FC9F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D681F24D1C690A3D0036FC9F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D681F24F1C690A470036FC9F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D681F2511C690BAE0036FC9F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D681F2531C690BC50036FC9F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +72,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D681F2501C690A470036FC9F /* libsqlite3.tbd in Frameworks */,
+				D681F24E1C690A3D0036FC9F /* libz.tbd in Frameworks */,
+				D681F24C1C690A350036FC9F /* SystemConfiguration.framework in Frameworks */,
+				D681F24A1C690A2C0036FC9F /* StoreKit.framework in Frameworks */,
+				D681F2481C690A250036FC9F /* Security.framework in Frameworks */,
+				D681F2461C690A1E0036FC9F /* QuartzCore.framework in Frameworks */,
+				D681F2441C690A180036FC9F /* CoreLocation.framework in Frameworks */,
+				D681F2421C690A120036FC9F /* CoreGraphics.framework in Frameworks */,
+				D681F2401C690A0B0036FC9F /* CFNetwork.framework in Frameworks */,
+				D681F23E1C6909FA0036FC9F /* AudioToolbox.framework in Frameworks */,
 				ED318A04B27685E89C627049 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +99,16 @@
 		201BC2F557A8A0983BA4619E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D681F24F1C690A470036FC9F /* libsqlite3.tbd */,
+				D681F24D1C690A3D0036FC9F /* libz.tbd */,
+				D681F24B1C690A350036FC9F /* SystemConfiguration.framework */,
+				D681F2491C690A2C0036FC9F /* StoreKit.framework */,
+				D681F2471C690A250036FC9F /* Security.framework */,
+				D681F2451C690A1E0036FC9F /* QuartzCore.framework */,
+				D681F2431C690A180036FC9F /* CoreLocation.framework */,
+				D681F2411C690A120036FC9F /* CoreGraphics.framework */,
+				D681F23F1C690A0B0036FC9F /* CFNetwork.framework */,
+				D681F23D1C6909FA0036FC9F /* AudioToolbox.framework */,
 				24A178E681A95D1FE1399FEE /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -85,9 +129,9 @@
 				D613BA111C67AA510091DCA8 /* Instagram Clone */,
 				D613BA261C67AA510091DCA8 /* Instagram CloneTests */,
 				D613BA101C67AA510091DCA8 /* Products */,
-				D613BA321C67AAC60091DCA8 /* README.md */,
 				73719B2F62B1312AA0FA5D1A /* Pods */,
 				201BC2F557A8A0983BA4619E /* Frameworks */,
+				D613BA321C67AAC60091DCA8 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +147,7 @@
 		D613BA111C67AA510091DCA8 /* Instagram Clone */ = {
 			isa = PBXGroup;
 			children = (
+				D681F2551C690BD40036FC9F /* ViewControllers */,
 				D613BA121C67AA510091DCA8 /* AppDelegate.swift */,
 				D613BA141C67AA510091DCA8 /* ViewController.swift */,
 				D613BA161C67AA510091DCA8 /* Main.storyboard */,
@@ -120,6 +165,15 @@
 				D613BA291C67AA510091DCA8 /* Info.plist */,
 			);
 			path = "Instagram CloneTests";
+			sourceTree = "<group>";
+		};
+		D681F2551C690BD40036FC9F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D681F2511C690BAE0036FC9F /* SignInViewController.swift */,
+				D681F2531C690BC50036FC9F /* SignUpViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +330,8 @@
 			files = (
 				D613BA151C67AA510091DCA8 /* ViewController.swift in Sources */,
 				D613BA131C67AA510091DCA8 /* AppDelegate.swift in Sources */,
+				D681F2541C690BC50036FC9F /* SignUpViewController.swift in Sources */,
+				D681F2521C690BAE0036FC9F /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
