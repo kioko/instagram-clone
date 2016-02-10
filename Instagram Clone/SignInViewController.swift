@@ -11,13 +11,15 @@ import Parse
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var instagramLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        //set the label font style
+        instagramLabel.font = UIFont(name: "Pacifico", size: 50)
     }
     
     override func didReceiveMemoryWarning() {
