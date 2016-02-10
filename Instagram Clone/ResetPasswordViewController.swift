@@ -35,12 +35,12 @@ class ResetPasswordViewController: UIViewController {
             //Show Alert Dialog
             showAlertDialog("Warning", alertMessage: "Please enter your email address.")
         }
-        
-        PFUser.requsetPasswordResetForEmailInBackground(emailAddressTextField.text){
+    
+        PFUser.requestPasswordResetForEmailInBackground(emailAddressTextField.text!){
             (success: Bool, error: NSError?) -> Void in
             
             if success{
-                showResetAlertDialog("Success", alertMessage: "Reset instruction has been sent to your email address.")
+                self.showResetAlertDialog("Success", alertMessage: "Reset instruction has been sent to your email address.")
             }
         }
     }
