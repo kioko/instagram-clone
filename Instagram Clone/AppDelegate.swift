@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
         
-        Parse.setApplicationId("PUT YOUR APPLICATION ID",
-            clientKey: "PUT YOUR CLIENT KEY")
+        Parse.setApplicationId("PUT APPLICATION ID HERE",
+            clientKey: "PUT CLIENT KEY HERE")
         
         PFUser.enableAutomaticUser()
         
@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
+        
+        //Check if the user is logged in.
+        checkUserLogin()
         
         return true
     }
@@ -109,6 +112,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    //Check if the user is logged in
+    func checkUserLogin(){
+        
+        //Remember users login
+        let userName = NSUserDefaults.standardUserDefaults().stringForKey("userName")
+        
+        if userName != nil{
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBar = storyBoard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+            window?.rootViewController = tabBar
+        }
+    }
 
 }
 
