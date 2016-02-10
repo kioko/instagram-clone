@@ -10,29 +10,28 @@ import UIKit
 import Parse
 
 class SignInViewController: UIViewController {
-
+    
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func signInAction(sender: AnyObject) {
         
         //Hide the keyboard
         self.view.endEditing(true)
         
         if (userNameTextField.text!.isEmpty || passwordTextField.text!.isEmpty){
-            
             showAlertDialog("Warning", alertMessage: "Please fill all fields")
         }
         
@@ -50,7 +49,7 @@ class SignInViewController: UIViewController {
             }
         }
     }
-  
+    
     @IBAction func signUpAction(sender: AnyObject) {
     }
     
@@ -71,6 +70,6 @@ class SignInViewController: UIViewController {
         //Display the alert dialog
         self.presentViewController(alertDialog, animated: true, completion: nil)
     }
-
-
+    
+    
 }
