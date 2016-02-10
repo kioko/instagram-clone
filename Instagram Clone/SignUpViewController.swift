@@ -14,6 +14,7 @@ UINavigationControllerDelegate{
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
@@ -116,10 +117,43 @@ UINavigationControllerDelegate{
     }
     
     @IBAction func signUpAction(sender: AnyObject) {
+        //dismiss the keyboard
+        self.view.endEditing(true)
+        
+        //Check if any of the textfields are empty
+        if (userNameTextField.text!.isEmpty || passwordTextField.text!.isEmpty ||
+            confirmPasswordTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
+            fullNameTextField.text!.isEmpty || bioTextField.text!.isEmpty ||
+            websiteTextField.text!.isEmpty){
+                //Show Alert Dialog
+                showAlertDialog("Warning", alertMessage: "Please fill all fields")
+        }
+        
+        //Check if passwords match
+        if (passwordTextField.text != confirmPasswordTextField.text){
+              //Show Alert Dialog
+            showAlertDialog("Warning", alertMessage: "Passwords don't match")
+            
+        }
     }
     
     @IBAction func cancelAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showAlertDialog(title : String,  alertMessage : String){
+        
+        //Show an alert dialog
+        let alertDialog = UIAlertController(title: title,
+            message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //Set the Ok Button
+        let okButton = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertDialog.addAction(okButton)
+        
+        //Display the alert dialog
+        self.presentViewController(alertDialog, animated: true, completion: nil)
+        
     }
     
 }
