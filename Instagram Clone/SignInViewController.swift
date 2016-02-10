@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SignInViewController: UIViewController {
 
@@ -26,6 +27,28 @@ class SignInViewController: UIViewController {
     
 
     @IBAction func signInAction(sender: AnyObject) {
+        
+        //Hide the keyboard
+        self.view.endEditing(true)
+        
+        if (userNameTextField.text!.isEmpty || passwordTextField.text!.isEmpty){
+            
+            showAlertDialog("Warning", alertMessage: "Please fill all fields")
+        }
+        
+        //Verify user credentials
+        PFUser.logInWithUsernameInBackground(userNameTextField.text!, password: passwordTextField.text!) {(user: PFUser?, error: NSError?) -> Void in
+            
+            if error == nil{
+                //Save the user
+                NSUserDefaults.standardUserDefaults().setObject(user?.username, forKey: "userName")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                //Call check login function from App delegate class
+                let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.checkUserLogin()
+            }
+        }
     }
   
     @IBAction func signUpAction(sender: AnyObject) {
@@ -34,16 +57,20 @@ class SignInViewController: UIViewController {
     @IBAction func forgotPasswordAction(sender: AnyObject) {
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //Displays an Alert message
+    func showAlertDialog(title : String,  alertMessage : String){
+        
+        //Show an alert dialog
+        let alertDialog = UIAlertController(title: title,
+            message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        //Set the Ok Button
+        let okButton = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertDialog.addAction(okButton)
+        
+        //Display the alert dialog
+        self.presentViewController(alertDialog, animated: true, completion: nil)
     }
-    */
-   
+
 
 }
