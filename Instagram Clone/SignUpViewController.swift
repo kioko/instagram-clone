@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
@@ -133,7 +134,34 @@ UINavigationControllerDelegate{
         if (passwordTextField.text != confirmPasswordTextField.text){
               //Show Alert Dialog
             showAlertDialog("Warning", alertMessage: "Passwords don't match")
+        }
+        
+        let user = PFUser.currentUser()!
+        user.username = userNameTextField.text!.lowercaseString
+        user.email = emailTextField.text
+        user.password = passwordTextField.text
+        
+        //Create custom columns in parse
+        user["fullName"] = fullNameTextField.text
+        user["bio"] = bioTextField.text
+        user["website"] = websiteTextField.text!.lowercaseString
+        
+        user["tel"] = ""
+        user["gender"] = ""
+        
+        //convert the image and send image to server
+        let profilePicture = UIImageJPEGRepresentation(profileImageView.image!, 0.5)
+        let imageFile = PFFile(name: "profilePicture.jpg", data: profilePicture!)
+        user["profilePicture"] = imageFile
+        
+        user.saveInBackgroundWithBlock{
+            (success : Bool, error: NSError?)-> Void in
             
+            if success {
+                print("Successfully Registered.")
+            }else{
+                print(error?.localizedDescription)
+            }
         }
     }
     
