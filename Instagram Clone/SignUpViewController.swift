@@ -158,7 +158,14 @@ UINavigationControllerDelegate{
             (success : Bool, error: NSError?)-> Void in
             
             if success {
-                print("Successfully Registered.")
+                //Save the userName on the device on successfull registation
+                NSUserDefaults.standardUserDefaults().setObject(user.username, forKey: "userName")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                //Call check login function from App delegate class
+                let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.checkUserLogin()
+                
             }else{
                 print(error?.localizedDescription)
             }
