@@ -165,9 +165,8 @@ UINavigationControllerDelegate{
                 //Call check login function from App delegate class
                 let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.checkUserLogin()
-                
             }else{
-                print(error?.localizedDescription)
+                 self.showAlertDialog("Error", alertMessage: error!.localizedDescription)
             }
         }
     }

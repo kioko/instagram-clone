@@ -48,6 +48,8 @@ class SignInViewController: UIViewController {
                 //Call check login function from App delegate class
                 let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.checkUserLogin()
+            }else{
+                self.showAlertDialog("Error", alertMessage: error!.localizedDescription)
             }
         }
     }
