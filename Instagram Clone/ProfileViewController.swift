@@ -7,51 +7,53 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import Parse
 
 class ProfileViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        //BackGround color
+        collectionView?.backgroundColor = .whiteColor()
+        
+        //Set the title of the navigation bar to the user name
+        self.navigationItem.title = PFUser.currentUser()!.username
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
+            withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! HeaderCollectionReusableView
+        
+        
+        headerView.userNameLabel.text = (PFUser.currentUser()!.objectForKey("fullName") as? String)
+        headerView.bioTextView.text = (PFUser.currentUser()!.objectForKey("bio") as? String)
+        
+        let profileImageQuery = PFUser.currentUser()!.objectForKey("profilePicture") as! PFFile
+        profileImageQuery.getDataInBackgroundWithBlock { (data : NSData?, error : NSError?) -> Void in
+            
+            if error == nil{
+                headerView.profileImageView.image = UIImage(data: data!)
+            }
+        }
+        
+        return headerView;
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return 0
     }
 
+    /*
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
     
@@ -59,6 +61,7 @@ class ProfileViewController: UICollectionViewController {
     
         return cell
     }
+*/
 
     // MARK: UICollectionViewDelegate
 
