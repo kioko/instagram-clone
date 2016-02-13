@@ -62,6 +62,48 @@ class ProfileViewController: UICollectionViewController {
             }
         }
         
+        //Fetch the number of posts
+        let postsQuery = PFQuery(className: "Posts")
+        postsQuery.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+        
+        //set the limit of data to fetch
+        postsQuery.countObjectsInBackgroundWithBlock ({ (count : Int32!, error: NSError?) -> Void in
+            
+            if error == nil{
+                headerView.postsLabel.text = "\(count)"
+            }else{
+                print(error!.localizedDescription)
+            }
+        }) //End of query execution
+        
+        //Fetch the number of followers
+        let followersQuery = PFQuery(className: "Followers")
+        followersQuery.whereKey("following", equalTo: (PFUser.currentUser()?.username)!)
+        
+        //set the limit of data to fetch
+        followersQuery.countObjectsInBackgroundWithBlock ({ (count : Int32!, error: NSError?) -> Void in
+            
+            if error == nil{
+                headerView.followersLabel.text = String(count)
+            }else{
+                print(error!.localizedDescription)
+            }
+        }) //End of query execution
+        
+        //Fetch the number of people following back
+        let followingQuery = PFQuery(className: "Followers")
+        followingQuery.whereKey("follow", equalTo: (PFUser.currentUser()?.username)!)
+        
+        //set the limit of data to fetch
+        followingQuery.countObjectsInBackgroundWithBlock ({ (count : Int32!, error: NSError?) -> Void in
+            
+            if error == nil{
+                headerView.followingLabel.text = "\(count)"
+            }else{
+                print(error!.localizedDescription)
+            }
+        }) //End of query execution
+        
         return headerView;
     }
     
