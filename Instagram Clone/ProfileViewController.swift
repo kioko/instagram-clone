@@ -10,24 +10,39 @@ import UIKit
 import Parse
 
 class ProfileViewController: UICollectionViewController {
-
+    
+    var pullTorefresh : UIRefreshControl!
+    var pageNumber : Int = 10;
+    
+    var uuidArray  = [String]()
+    var picturesArray = [PFFile]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //BackGround color
         collectionView?.backgroundColor = .whiteColor()
         
         //Set the title of the navigation bar to the user name
         self.navigationItem.title = PFUser.currentUser()!.username
         
-       
+        //Add pull to refresh to the view
+        pullTorefresh = UIRefreshControl()
+        pullTorefresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        collectionView?.addSubview(pullTorefresh)
+        
+        //Load posts
+        loadPosts()
+        
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // Configure HaderView
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
@@ -42,56 +57,74 @@ class ProfileViewController: UICollectionViewController {
             
             if error == nil{
                 headerView.profileImageView.image = UIImage(data: data!)
+            } else{
+                print(error!.localizedDescription)
             }
         }
         
         return headerView;
     }
-
-
+    
+    // Number of cells
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return picturesArray.count
     }
-
-    /*
+    
+    //Cell configuration
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-    
-        // Configure the cell
-    
+        
+        //Declare and initialise the cell.
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PhotoCollectionViewCell
+        
+        //Load the image for the array to the cell.
+        picturesArray[indexPath.row].getDataInBackgroundWithBlock { (data : NSData?, error : NSError?) -> Void in
+            if error == nil{
+                cell.photoImageView.image = UIImage(data: data!)
+            }else{
+                print(error!.localizedDescription)
+            }
+        }
         return cell
     }
-*/
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
+    
+    //This function is called when the user pulls down the view and data is reloaded.
+    func refresh(){
+        //Reload the data
+        collectionView?.reloadData()
+        
+        //Stop the refesh action
+        pullTorefresh.endRefreshing()
     }
-    */
-
+    
+    func loadPosts(){
+        
+        //Fetch the data
+        let postQuery = PFQuery(className: "Posts")
+        postQuery.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+        
+        //set the limit of data to fetch
+        postQuery.limit = pageNumber
+        postQuery.findObjectsInBackgroundWithBlock ({ (objects : [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil{
+                
+                //Clear data
+                self.uuidArray.removeAll(keepCapacity: false)
+                self.picturesArray.removeAll(keepCapacity: false)
+                
+                //Loop through the data
+                for object in objects!{
+                    //Add data from uuid to the uuidArray
+                    self.uuidArray.append(object.valueForKey("uuid") as! String)
+                    self.picturesArray.append(object.valueForKey("Pictures") as! PFFile)
+                }
+                
+                //Reload the collectionView
+                self.collectionView?.reloadData()
+            }else{
+                print(error!.localizedDescription)
+            }
+        }) //End of query execution
+    }
 }
