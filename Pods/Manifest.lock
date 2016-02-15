@@ -2,12 +2,15 @@ PODS:
   - Bolts/Tasks (1.6.0)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
+  - UIColor_Hex_Swift (1.8)
 
 DEPENDENCIES:
   - Parse
+  - UIColor_Hex_Swift (~> 1.8)
 
 SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  UIColor_Hex_Swift: a66b9d5f6e8fddbd9fe32996504f0b7e9d20d680
 
 COCOAPODS: 0.39.0

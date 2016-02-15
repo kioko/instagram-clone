@@ -24,8 +24,13 @@
 		D681F2501C690A470036FC9F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D681F24F1C690A470036FC9F /* libsqlite3.tbd */; };
 		D681F2521C690BAE0036FC9F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D681F2511C690BAE0036FC9F /* SignInViewController.swift */; };
 		D681F2541C690BC50036FC9F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D681F2531C690BC50036FC9F /* SignUpViewController.swift */; };
+		D68BE2D71C6DDF220022579D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68BE2D61C6DDF210022579D /* ProfileViewController.swift */; };
+		D68BE2D91C6DDF810022579D /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68BE2D81C6DDF810022579D /* HeaderCollectionReusableView.swift */; };
+		D68BE2DC1C6DE53F0022579D /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68BE2DB1C6DE53F0022579D /* PhotoCollectionViewCell.swift */; };
 		D6C407EC1C6BB21200056E2F /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C407EB1C6BB21200056E2F /* ResetPasswordViewController.swift */; };
 		D6C407EF1C6BB9EF00056E2F /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6C407EE1C6BB9EF00056E2F /* Pacifico.ttf */; };
+		D6DA02D31C71EA7D00D887AA /* FollowersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DA02D21C71EA7D00D887AA /* FollowersTableViewController.swift */; };
+		D6DA02D51C71EB1900D887AA /* FollowersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DA02D41C71EB1900D887AA /* FollowersCell.swift */; };
 		ED318A04B27685E89C627049 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A178E681A95D1FE1399FEE /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +70,13 @@
 		D681F24F1C690A470036FC9F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D681F2511C690BAE0036FC9F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D681F2531C690BC50036FC9F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D68BE2D61C6DDF210022579D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D68BE2D81C6DDF810022579D /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		D68BE2DB1C6DE53F0022579D /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6C407EB1C6BB21200056E2F /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		D6C407EE1C6BB9EF00056E2F /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
+		D6DA02D21C71EA7D00D887AA /* FollowersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersTableViewController.swift; sourceTree = "<group>"; };
+		D6DA02D41C71EB1900D887AA /* FollowersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,7 @@
 		D613BA111C67AA510091DCA8 /* Instagram Clone */ = {
 			isa = PBXGroup;
 			children = (
+				D68BE2DA1C6DE51D0022579D /* Cells */,
 				D681F2551C690BD40036FC9F /* ViewControllers */,
 				D613BA121C67AA510091DCA8 /* AppDelegate.swift */,
 				D613BA161C67AA510091DCA8 /* Main.storyboard */,
@@ -175,8 +186,20 @@
 				D681F2511C690BAE0036FC9F /* SignInViewController.swift */,
 				D681F2531C690BC50036FC9F /* SignUpViewController.swift */,
 				D6C407EB1C6BB21200056E2F /* ResetPasswordViewController.swift */,
+				D68BE2D61C6DDF210022579D /* ProfileViewController.swift */,
+				D68BE2D81C6DDF810022579D /* HeaderCollectionReusableView.swift */,
+				D6DA02D21C71EA7D00D887AA /* FollowersTableViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D68BE2DA1C6DE51D0022579D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D68BE2DB1C6DE53F0022579D /* PhotoCollectionViewCell.swift */,
+				D6DA02D41C71EB1900D887AA /* FollowersCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		D6C407ED1C6BB9D400056E2F /* Resources */ = {
@@ -342,7 +365,12 @@
 			files = (
 				D613BA131C67AA510091DCA8 /* AppDelegate.swift in Sources */,
 				D6C407EC1C6BB21200056E2F /* ResetPasswordViewController.swift in Sources */,
+				D68BE2D71C6DDF220022579D /* ProfileViewController.swift in Sources */,
 				D681F2541C690BC50036FC9F /* SignUpViewController.swift in Sources */,
+				D68BE2DC1C6DE53F0022579D /* PhotoCollectionViewCell.swift in Sources */,
+				D6DA02D31C71EA7D00D887AA /* FollowersTableViewController.swift in Sources */,
+				D6DA02D51C71EB1900D887AA /* FollowersCell.swift in Sources */,
+				D68BE2D91C6DDF810022579D /* HeaderCollectionReusableView.swift in Sources */,
 				D681F2521C690BAE0036FC9F /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
