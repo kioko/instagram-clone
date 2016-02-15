@@ -42,6 +42,22 @@ class ProfileViewController: UICollectionViewController {
     }
     
     
+    // MARK: UICollectionViewDelegateFlowLayout delegate method
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    {
+        let cellSpacing = CGFloat(1) //Define the space between each cell
+        let leftRightMargin = CGFloat(0) //If defined in Interface Builder for "Section Insets"
+        let numColumns = CGFloat(3) //The total number of columns you want
+        
+        let totalCellSpace = cellSpacing * (numColumns - 1)
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        let width = (screenWidth - leftRightMargin - totalCellSpace) / numColumns
+        let height = CGFloat(120) //whatever height you want
+        
+        return CGSizeMake(width, height);
+    }
+    
+    
     // Configure HaderView
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
