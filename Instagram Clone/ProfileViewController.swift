@@ -36,11 +36,11 @@ class ProfileViewController: UICollectionViewController {
         
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // Configure HaderView
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -48,6 +48,7 @@ class ProfileViewController: UICollectionViewController {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
             withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! HeaderCollectionReusableView
         
+       styleProfilePucture(headerView.profileImageView)
         
         headerView.userNameLabel.text = (PFUser.currentUser()!.objectForKey("fullName") as? String)
         headerView.bioTextView.text = (PFUser.currentUser()!.objectForKey("bio") as? String)
@@ -103,6 +104,22 @@ class ProfileViewController: UICollectionViewController {
                 print(error!.localizedDescription)
             }
         }) //End of query execution
+        
+        //Implement tap gestures on posts
+        let postTapGuesture  = UITapGestureRecognizer(target: self, action: "postTap")
+        postTapGuesture.numberOfTapsRequired = 1
+        headerView.postsLabel.userInteractionEnabled = true
+        headerView.postsLabel.addGestureRecognizer(postTapGuesture)
+        
+        let followersTapGuesture  = UITapGestureRecognizer(target: self, action: "followersTap")
+        followersTapGuesture.numberOfTapsRequired = 1
+        headerView.followersLabel.userInteractionEnabled = true
+        headerView.followersLabel.addGestureRecognizer(followersTapGuesture)
+        
+        let followingTapGuesture  = UITapGestureRecognizer(target: self, action: "followingTap")
+        followingTapGuesture.numberOfTapsRequired = 1
+        headerView.followingLabel.userInteractionEnabled = true
+        headerView.followingLabel.addGestureRecognizer(followingTapGuesture)
         
         return headerView;
     }
@@ -168,5 +185,37 @@ class ProfileViewController: UICollectionViewController {
                 print(error!.localizedDescription)
             }
         }) //End of query execution
+    }
+    
+    func postTap (){
+        
+        if !picturesArray.isEmpty {
+            let index = NSIndexPath(forItem: 0, inSection: 0)
+            self.collectionView?.scrollToItemAtIndexPath(index, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
+        }
+    }
+    
+    func followersTap(){
+        user = (PFUser.currentUser()?.username)!
+        navigationTile = "Followers"
+        
+        let followers = self.storyboard?.instantiateViewControllerWithIdentifier("FollowersTableViewController") as! FollowersTableViewController
+        self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    func followingTap(){
+        user = (PFUser.currentUser()?.username)!
+        navigationTile = "Following"
+        
+        let followers = self.storyboard?.instantiateViewControllerWithIdentifier("FollowersTableViewController") as! FollowersTableViewController
+        self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    func styleProfilePucture(profileImageView: UIImageView){
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.cornerRadius = 40.0;
+        profileImageView.layer.borderWidth = 1;
     }
 }
