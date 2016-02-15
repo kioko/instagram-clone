@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -52,6 +53,7 @@
                                 <exclude reference="Pkk-WF-CqW"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="0FA-br-r7n"/>
                                 <exclude reference="4TS-AR-mdJ"/>
                                 <exclude reference="9OU-Ml-d7G"/>
                                 <exclude reference="G63-VT-xRO"/>
@@ -59,7 +61,6 @@
                                 <exclude reference="YOn-IW-5P3"/>
                                 <exclude reference="24R-d5-TYd"/>
                                 <exclude reference="VgN-Ec-1Xa"/>
-                                <exclude reference="0FA-br-r7n"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -69,6 +70,7 @@
                                 <include reference="Pkk-WF-CqW"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="0FA-br-r7n"/>
                                 <include reference="4TS-AR-mdJ"/>
                                 <include reference="9OU-Ml-d7G"/>
                                 <include reference="G63-VT-xRO"/>
@@ -76,7 +78,6 @@
                                 <include reference="YOn-IW-5P3"/>
                                 <include reference="24R-d5-TYd"/>
                                 <include reference="VgN-Ec-1Xa"/>
-                                <include reference="0FA-br-r7n"/>
                             </mask>
                         </variation>
                     </view>
