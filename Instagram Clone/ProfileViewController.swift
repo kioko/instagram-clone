@@ -64,7 +64,8 @@ class ProfileViewController: UICollectionViewController {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
             withReuseIdentifier: "HeaderView", forIndexPath: indexPath) as! HeaderCollectionReusableView
         
-       styleProfilePucture(headerView.profileImageView)
+        //Style the profile picture
+        styleProfilePucture(headerView.profileImageView)
         
         headerView.userNameLabel.text = (PFUser.currentUser()!.objectForKey("fullName") as? String)
         headerView.bioTextView.text = (PFUser.currentUser()!.objectForKey("bio") as? String)
@@ -172,6 +173,7 @@ class ProfileViewController: UICollectionViewController {
         pullTorefresh.endRefreshing()
     }
     
+    //Load user posts.
     func loadPosts(){
         
         //Fetch the data
@@ -180,6 +182,7 @@ class ProfileViewController: UICollectionViewController {
         
         //set the limit of data to fetch
         postQuery.limit = pageNumber
+        postQuery.addDescendingOrder("createdAt") //Order posts by date created.
         postQuery.findObjectsInBackgroundWithBlock ({ (objects : [PFObject]?, error: NSError?) -> Void in
             
             if error == nil{
