@@ -12,13 +12,15 @@ import Parse
 class ProfileViewController: UICollectionViewController {
     
     var pullTorefresh : UIRefreshControl!
-    var pageNumber : Int = 10;
+    var pageNumber : Int = 10; //Number of images to be loaded
     
     var uuidArray  = [String]()
     var picturesArray = [PFFile]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView?.alwaysBounceVertical = true
         
         //BackGround color
         collectionView?.backgroundColor = .whiteColor()
@@ -58,7 +60,7 @@ class ProfileViewController: UICollectionViewController {
     }
     
     
-    // Configure HaderView
+    // Configure HeaderView
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
@@ -69,6 +71,7 @@ class ProfileViewController: UICollectionViewController {
         
         headerView.userNameLabel.text = (PFUser.currentUser()!.objectForKey("fullName") as? String)
         headerView.bioTextView.text = (PFUser.currentUser()!.objectForKey("bio") as? String)
+        headerView.bioTextView.sizeToFit()
         
         let profileImageQuery = PFUser.currentUser()!.objectForKey("profilePicture") as! PFFile
         profileImageQuery.getDataInBackgroundWithBlock { (data : NSData?, error : NSError?) -> Void in
