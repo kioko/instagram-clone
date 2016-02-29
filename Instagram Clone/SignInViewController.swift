@@ -24,6 +24,33 @@ class SignInViewController: UIViewController {
         //set the label font style
         instagramLabel.font = UIFont(name: "Pacifico", size: 50)
         
+        let iconWidth = 20;
+        let iconHeight = 20;
+        
+        let imageView = UIImageView();
+        let imageEmail = UIImage(named: "ic_email.png");
+        imageView.image = imageEmail;
+        // set frame on image before adding it to the uitextfield
+        imageView.frame = CGRect(x: 5, y: 5, width: iconWidth, height: iconHeight)
+        userNameTextField.leftViewMode = UITextFieldViewMode.Always
+        userNameTextField.addSubview(imageView)
+
+        let imageViewPassword = UIImageView();
+        let imagePassword = UIImage(named: "ic_password.png");
+        // set frame on image before adding it to the uitextfield
+        imageViewPassword.image = imagePassword;
+        imageViewPassword.frame = CGRect(x: 5, y: 5, width: iconWidth, height: iconHeight)
+        passwordTextField.leftViewMode = UITextFieldViewMode.Always
+        passwordTextField.addSubview(imageViewPassword)
+        
+        //set Padding
+        let paddingView = UIView(frame: CGRectMake(0, 0, 25, self.userNameTextField.frame.height))
+        userNameTextField.leftView = paddingView
+        
+        let emailPaddingView = UIView(frame: CGRectMake(0, 0, 25, self.passwordTextField.frame.height))
+        passwordTextField.leftView = emailPaddingView
+        
+        
         
         //Check notificaiton if keyboard is showing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showKeyboard:", name: UIKeyboardWillShowNotification, object: nil)
@@ -36,6 +63,7 @@ class SignInViewController: UIViewController {
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap) //add the gesture the view
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
