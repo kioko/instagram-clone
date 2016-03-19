@@ -1411,7 +1411,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTn-VR-ZwN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="FTn-VR-ZwN">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAd-Q1-faN">
@@ -1669,8 +1669,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="CAd-Q1-faN" secondAttribute="trailing" id="5GX-zG-uFH"/>
                                     <constraint firstItem="CAd-Q1-faN" firstAttribute="leading" secondItem="FTn-VR-ZwN" secondAttribute="leading" id="Tm3-Su-Lhc"/>
                                     <constraint firstItem="CAd-Q1-faN" firstAttribute="centerX" secondItem="FTn-VR-ZwN" secondAttribute="centerX" id="YW0-ey-wMu"/>
                                     <constraint firstAttribute="bottom" secondItem="CAd-Q1-faN" secondAttribute="bottom" constant="-15" id="f05-Ab-3A5"/>
@@ -1683,19 +1683,18 @@
                                         <exclude reference="CAd-Q1-faN"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="5GX-zG-uFH"/>
                                         <exclude reference="Tm3-Su-Lhc"/>
                                         <exclude reference="YW0-ey-wMu"/>
                                         <exclude reference="f05-Ab-3A5"/>
                                         <exclude reference="yN2-CD-6vI"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
                                     <mask key="subviews">
                                         <include reference="CAd-Q1-faN"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="5GX-zG-uFH"/>
                                         <include reference="Tm3-Su-Lhc"/>
                                         <include reference="YW0-ey-wMu"/>
                                         <include reference="f05-Ab-3A5"/>
