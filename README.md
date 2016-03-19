@@ -4,6 +4,9 @@ My Swift adventure is getting better. This is my attemept to create a clone of I
 
 Constuction is still taking place but this is what I have so far.... 🤓
 
+##Project Setup
+###Parse
+
 ###Progress ...
 <p align="center">
   <img src="https://github.com/kioko/instagram-clone/blob/master/Art/HomeScreen.png?raw=true" alt="User Profile"/>
