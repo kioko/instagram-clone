@@ -128,12 +128,16 @@ UINavigationControllerDelegate{
             websiteTextField.text!.isEmpty){
                 //Show Alert Dialog
                 showAlertDialog("Warning", alertMessage: "Please fill all fields")
+                
+                return
         }
         
         //Check if passwords match
         if (passwordTextField.text != confirmPasswordTextField.text){
               //Show Alert Dialog
             showAlertDialog("Warning", alertMessage: "Passwords don't match")
+            
+            return
         }
         
         let user = PFUser.currentUser()!
