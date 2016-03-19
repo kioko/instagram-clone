@@ -33,9 +33,16 @@ class ProfileViewController: UICollectionViewController {
         pullTorefresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         collectionView?.addSubview(pullTorefresh)
         
+        //Receive notificaiton
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData:", name: "reloadData", object: nil)
+        
         //Load posts
         loadPosts()
         
+    }
+    
+    func reloadData(notification: NSNotification){
+      collectionView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
