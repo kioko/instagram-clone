@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
 import Parse
+import UIColor_Hex_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //Set the navigation color
+        let navigationBarAppearace = UINavigationBar.appearance()
+        //Set Tint Color
+        navigationBarAppearace.tintColor =  UIColor.whiteColor()
+        navigationBarAppearace.barTintColor = UIColor(rgba: "#125688")
+        // change navigation item title color
+         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
         
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
