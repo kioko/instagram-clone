@@ -53,12 +53,12 @@ class SignInViewController: UIViewController {
         
         
         //Check notificaiton if keyboard is showing
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showKeyboard:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.showKeyboard(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideKeyboard:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.hideKeyboard(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         //Hide keyboard tap guesture
-        let hideTap = UITapGestureRecognizer(target: self, action: "hideKeyboardType:")
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.hideKeyboardType(_:)))
         hideTap.numberOfTapsRequired = 1
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap) //add the gesture the view
