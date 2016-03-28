@@ -43,15 +43,15 @@ UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerD
         genderTextField.inputView = genderPickerView
         
         //Check notificaiton if keyboard is showing
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showKeyboard:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileViewController.showKeyboard(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideKeyboard:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditProfileViewController.hideKeyboard(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         fetchUserData()
         
         //Tap Guesture
         //Hide keyboard tap guesture
-        let hideTap = UITapGestureRecognizer(target: self, action: "hideKeyboardType:")
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(EditProfileViewController.hideKeyboardType(_:)))
         hideTap.numberOfTapsRequired = 1
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap) //add the gesture the view
@@ -71,7 +71,7 @@ UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerD
         bioTextView.clipsToBounds = true
         
         //Image tap guesture that invokes UIImagePickerController
-        let loadImageTap = UITapGestureRecognizer(target: self, action: "loadProfileImage:")
+        let loadImageTap = UITapGestureRecognizer(target: self, action: #selector(EditProfileViewController.loadProfileImage(_:)))
         loadImageTap.numberOfTapsRequired = 1
         profilePictureImageView.userInteractionEnabled = true
         profilePictureImageView.addGestureRecognizer(loadImageTap) //add the gesture the view

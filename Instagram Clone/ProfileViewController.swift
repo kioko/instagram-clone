@@ -12,7 +12,7 @@ import Parse
 class ProfileViewController: UICollectionViewController {
     
     var pullTorefresh : UIRefreshControl!
-    var pageNumber : Int = 10; //Number of images to be loaded
+    var pageNumber : Int = 12; //Number of images to be loaded
     
     var uuidArray  = [String]()
     var picturesArray = [PFFile]()
@@ -30,11 +30,14 @@ class ProfileViewController: UICollectionViewController {
         
         //Add pull to refresh to the view
         pullTorefresh = UIRefreshControl()
-        pullTorefresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        pullTorefresh.addTarget(self, action: #selector(ProfileViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
         collectionView?.addSubview(pullTorefresh)
         
-        //Receive notificaiton
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData:", name: "reloadData", object: nil)
+        //Receive notificaiton when profile is updated
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileViewController.reloadData(_:)), name: "reloadData", object: nil)
+        
+        //Receive noticifation when a post is uploaded
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileViewController.postUploaded(_:)), name: "postUploaded", object: nil)
         
         //Load posts
         loadPosts()
@@ -43,6 +46,10 @@ class ProfileViewController: UICollectionViewController {
     
     func reloadData(notification: NSNotification){
       collectionView?.reloadData()
+    }
+    
+    func postUploaded(notification: NSNotification) {
+        loadPosts()
     }
     
     override func didReceiveMemoryWarning() {
@@ -133,17 +140,17 @@ class ProfileViewController: UICollectionViewController {
         }) //End of query execution
         
         //Implement tap gestures on posts
-        let postTapGuesture  = UITapGestureRecognizer(target: self, action: "postTap")
+        let postTapGuesture  = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.postTap))
         postTapGuesture.numberOfTapsRequired = 1
         headerView.postsLabel.userInteractionEnabled = true
         headerView.postsLabel.addGestureRecognizer(postTapGuesture)
         
-        let followersTapGuesture  = UITapGestureRecognizer(target: self, action: "followersTap")
+        let followersTapGuesture  = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.followersTap))
         followersTapGuesture.numberOfTapsRequired = 1
         headerView.followersLabel.userInteractionEnabled = true
         headerView.followersLabel.addGestureRecognizer(followersTapGuesture)
         
-        let followingTapGuesture  = UITapGestureRecognizer(target: self, action: "followingTap")
+        let followingTapGuesture  = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.followingTap))
         followingTapGuesture.numberOfTapsRequired = 1
         headerView.followingLabel.userInteractionEnabled = true
         headerView.followingLabel.addGestureRecognizer(followingTapGuesture)
@@ -246,5 +253,51 @@ class ProfileViewController: UICollectionViewController {
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 40.0;
         profileImageView.layer.borderWidth = 1;
+    }
+    
+    //Load more images while scrolling down
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height{
+            self.loadMorePosts()
+        }
+    }
+    
+    //Load more posts
+    func loadMorePosts(){
+        //Check if there are more objets
+        if pageNumber <= picturesArray.count{
+            //Increase page size
+            pageNumber = pageNumber + 12
+            
+            //Fetch the data
+            let postQuery = PFQuery(className: "Posts")
+            postQuery.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+            
+            //set the limit of data to fetch
+            postQuery.limit = pageNumber
+            postQuery.addDescendingOrder("createdAt") //Order posts by date created.
+            postQuery.findObjectsInBackgroundWithBlock ({ (objects : [PFObject]?, error: NSError?) -> Void in
+                
+                if error == nil{
+                    
+                    //Clear data
+                    self.uuidArray.removeAll(keepCapacity: false)
+                    self.picturesArray.removeAll(keepCapacity: false)
+                    
+                    //Loop through the data
+                    for object in objects!{
+                        //Add data from uuid to the uuidArray
+                        self.uuidArray.append(object.valueForKey("uuid") as! String)
+                        self.picturesArray.append(object.valueForKey("Pictures") as! PFFile)
+                    }
+                    
+                    //Reload the collectionView
+                    self.collectionView?.reloadData()
+                }else{
+                    print(error!.localizedDescription)
+                }
+            }) //End of query execution
+
+        }
     }
 }

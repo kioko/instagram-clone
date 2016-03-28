@@ -46,12 +46,12 @@ UINavigationControllerDelegate{
         scrollViewHeight = scrollView.frame.size.height
         
         //Check notificaiton if keyboard is showing
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showKeyboard:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.showKeyboard(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideKeyboard:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.hideKeyboard(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         //Hide keyboard tap guesture
-        let hideTap = UITapGestureRecognizer(target: self, action: "hideKeyboardType:")
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.hideKeyboardType(_:)))
         hideTap.numberOfTapsRequired = 1
         self.view.userInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap) //add the gesture the view
@@ -61,7 +61,7 @@ UINavigationControllerDelegate{
         profileImageView.clipsToBounds = true
         
         //Image tap guesture that invokes UIImagePickerController
-        let loadImageTap = UITapGestureRecognizer(target: self, action: "loadProfileImage:")
+        let loadImageTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.loadProfileImage(_:)))
         loadImageTap.numberOfTapsRequired = 1
         profileImageView.userInteractionEnabled = true
         profileImageView.addGestureRecognizer(loadImageTap) //add the gesture the view
